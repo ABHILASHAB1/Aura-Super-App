@@ -1,0 +1,5 @@
+mkdir -p app/src/main/java/com/aura/app app/src/main/res/values .github/workflows
+
+cat <<EOF > settings.gradle
+rootProject.name = "AuraApp"
+include ':app'
