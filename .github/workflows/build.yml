@@ -11,11 +11,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       
-      - name: Setup Gradle & Build
+      - name: Build with Gradle (Direct Mode)
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.1.1 # This automatically installs the wrapper for us!
-          arguments: assembleDebug
+          gradle-version: 8.1.1
+          cache-disabled: true # BYPASS THE BROKEN GITHUB CACHE SERVICE
+      
+      - name: Execute Compile
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
